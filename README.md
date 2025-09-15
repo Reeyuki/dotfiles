@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>✨ TheLp's Hyprland dotfiles ✨</h1>
+    <h1>✨ Reeyuki's Hyprland dotfiles ✨</h1>
     <h1>✨ Forked from shub39 ✨</h1>
     <h1>✨ Merged with EviLuci's dotfiles ✨</h1>
 </div>
@@ -24,7 +24,7 @@
 - On fresh Hyprland, install all required packages and clone this repository at `~/.config`
 
   ```bash
-  git clone --depth 1 https://github.com/TheLp281/dotfiles ~/.config/dotfiles
+  git clone --depth 1 https://github.com/Reeyuki/dotfiles ~/.config/dotfiles
   ```
 
 - Add `source = ~/.config/dotfiles/hyprland/hyprland.conf` to `~/.config/hypr/hyprland.conf` and remove everything else
