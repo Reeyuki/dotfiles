@@ -9,15 +9,14 @@
 </a>
 </div>
 
-![1](screenshots/screenshot_2024-11-17_22-43-14.png)
+![1](screenshots/screenshot_2025-11-23_10-27-24.png)
 
-![2](screenshots/screenshot_2024-11-17_22-48-25.png)
+![2](screenshots/screenshot_2025-11-23_10-29-12.png)
 
-![3](screenshots/screenshot_2024-11-17_22-53-31.png)
+![3](screenshots/screenshot_2025-11-23_10-31-39.png)
 
-![4](screenshots/2024-11-17-230108_hyprshot.png)
+![4](screenshots/screenshot_2025-11-23_10-31-51.png)
 
-![5](screenshots/screenshot_2024-11-17_22-49-13.png)
 
 ## 🚀 Quick Start
 
