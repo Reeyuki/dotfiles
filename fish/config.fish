@@ -1,7 +1,17 @@
+export PATH="$PATH:/home/arch/Scripts"
+export PATH="$PATH:/home/arch/Programs"
 
-alias dot=dotnet
-alias py=python
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
 alias mp=mousepad
+alias py=python
+alias dr="cd ~/liventcord/server/src && dotnet watch run"
+alias ns="pnpm run dev"
+alias dwr="dotnet watch run"
+alias servepy="python -m http.server 6060"
+
 export MAKEFLAGS="-j8" 
 
 ### ADDING TO THE PATH
@@ -417,3 +427,4 @@ set fish_color_autosuggestion '#7d7d7d'
 set fish_color_command brcyan
 set fish_color_error '#ff6c6b'
 set fish_color_param brcyan
+set -x MANPAGER "vim -c 'set bt=man' -"

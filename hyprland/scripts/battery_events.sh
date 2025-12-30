@@ -6,19 +6,13 @@ prev_state=""
 last_notify_time=0
 interval=10
 
+prev_state=$(upower -i "$upower_path" | grep "state:" | awk '{print $2}')
+
 check_battery() {
-  battery_pct=$(upower -i $upower_path | grep percentage | awk '{print int($2)}')
-  state=$(upower -i $upower_path | grep state | awk '{print $2}')
+  battery_pct=$(upower -i "$upower_path" | grep "percentage:" | awk '{print int($2)}')
+  state=$(upower -i "$upower_path" | grep "state:" | awk '{print $2}')
   now=$(date +%s)
 
-  if [[ "$state" != "$prev_state" ]]; then
-    if [[ "$state" == "charging" ]]; then
-      notify-send -u normal "Battery Status" "Battery is now charging."
-    elif [[ "$state" == "discharging" ]]; then
-      notify-send -u normal "Battery Status" "Battery is now discharging."
-    fi
-    prev_state=$state
-  fi
 
   if [[ "$state" == "discharging" ]]; then
     if (( battery_pct <= 10 )); then
@@ -32,7 +26,7 @@ check_battery() {
     elif (( battery_pct <= 20 )); then
       if [[ $notified -ne 2 ]] || (( now - last_notify_time >= 20 )); then
         notify-send -u normal "Battery Warning" "Battery is low! ($battery_pct%)"
-        hyprctl notify 16776960 5000 2 "Battery low! ($battery_pct%)"  
+        hyprctl notify 16776960 5000 2 "Battery low! ($battery_pct%)"
         notified=2
         last_notify_time=$now
       fi

@@ -343,7 +343,7 @@
       }
     },
     "wlr/taskbar": {
-      "format": "{icon} {title:.17}",
+      "format": "{icon}", 
       "icon-size": 18,
       "icon-theme": "BeautyLine",
       "tooltip-format": "{title}",

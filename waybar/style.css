@@ -152,7 +152,7 @@ window#waybar.empty {
 }
 
 #power {
-  margin-right: 5px;
+  padding-right: 20px;
 }
 
 #temperature.critical {

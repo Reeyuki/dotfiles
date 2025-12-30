@@ -1,0 +1,305 @@
+[
+  {
+    "name": "mainbar",
+    "layer": "top",
+    "position": "top",
+    "height": 35,
+    "mode": "dock",
+    "exclusive": true,
+    "spacing": 2,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "reload_style_on_change": true,
+    "modules-left": [
+      "hyprland/workspaces",
+      "wlr/taskbar",
+      "hyprland/submap"
+    ],
+    "modules-center": [
+      "hyprland/window",
+      "mpris"
+    ],
+    "modules-right": [
+      "custom/updates",
+      "privacy",
+      "network",
+      "wireplumber",
+      "battery",
+      "clock",
+      "tray",
+      "custom/notification",
+      "group/power"
+    ],
+
+    "group/power": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 500,
+        "children-class": "drawer-child",
+        "transition-left-to-right": false
+      },
+      "modules": [
+        "custom/power",
+        "custom/quit",
+        "custom/lock",
+        "custom/reboot"
+      ]
+    },
+    "custom/quit": {
+        "format": "󰗼",
+        "tooltip": false,
+        "on-click": "if zenity --question --text='Are you sure you want to quit?'; then hyprctl dispatch exit; fi"
+        },
+        "custom/lock": {
+        "format": "󰍁",
+        "tooltip": false,
+        "on-click": "hyprlock"
+        },
+        "custom/reboot": {
+        "format": "󰜉",
+        "tooltip": false,
+        "on-click": "if zenity --question --text='Are you sure you want to reboot?'; then reboot; fi"
+        },
+        "custom/power": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "if zenity --question --text='Are you sure you want to shutdown?'; then shutdown now; fi"
+        }
+        ,
+    "group/cpu-load": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 500,
+        "children-class": "drawer-child",
+        "transition-left-to-right": false
+      },
+      "modules": ["cpu", "load"]
+    },
+    "cpu": {
+      "interval": 1,
+      "format": "󰍛 {usage}%",
+      "on-click": "",
+      "tooltip": false
+    },
+    "load": {
+      "interval": 10,
+      "format": "load: {load1} {load5} {load15}"
+    },
+    "memory": {
+      "interval": 30,
+      "format": " {}%",
+      "format-alt": " {used}G",
+      "tooltip": true,
+      "tooltip-format": "{used:0.1f}G/{total:0.1f}G"
+    },
+    "temperature": {
+      "thermal-zone": 2,
+      "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+      "critical-threshold": 80,
+      "format-critical": "{temperatureC}°C {icon}",
+      "format": "{icon} {temperatureC}°C",
+      "format-alt": "{temperatureF}°F {icon}",
+      "format-icons": ["", "", ""],
+      "tooltip": false
+    },
+    "hyprland/window": {
+      "format": "{}",
+      "max-length": 40,
+      "rewrite": {
+        "(.*) — Mozilla Firefox": "🌎 $1"
+      },
+      "separate-outputs": true
+    },
+    "keyboard-state": {
+      "numlock": true,
+      "capslock": true,
+      "format": "{name} {icon}",
+      "format-icons": {
+        "locked": "",
+        "unlocked": ""
+      }
+    },
+    "privacy": {
+      "icon-spacing": 4,
+      "icon-size": 14,
+      "transition-duration": 250,
+      "modules": [
+        {
+          "type": "screenshare",
+          "tooltip": true,
+          "tooltip-icon-size": 14
+        }
+      ]
+    },
+    "network": {
+      "format": "{ifname}",
+      "format-wifi": "{icon} {essid}",
+      "format-ethernet": "󱘖 {ifname}",
+      "format-disconnected": "󰌙 ⚠",
+      "format-alt": " {ipaddr}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+      "tooltip-format": "{ifname} via {gwaddr}",
+      "tooltip-format-wifi": "{frequency} MHz ({signalStrength}%) [󰾆 {bandwidthTotalBytes}]",
+      "tooltip-format-ethernet": "{ipaddr}/{cidr} [󰾆 {bandwidthTotalBytes}]",
+      "tooltip-format-disconnected": "Disconnected ⚠",
+      "max-length": 30,
+      "format-icons": ["󰤯", "󰤟", "󰤢", "󰤢", "󰤨"]
+    },
+    "clock": {
+      "format": "⏰{:%I:%M %p}",
+      "format-alt": "📅{:%A, %B %d, %Y (%I:%M %p)}",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "calendar": {
+        "mode": "year",
+        "mode-mon-col": 3,
+        "weeks-pos": "right",
+        "on-scroll": 1,
+        "on-click-right": "mode",
+        "format": {
+          "months": "<span color='#ffead3'><b>{}</b></span>",
+          "days": "<span color='#ecc6d9'><b>{}</b></span>",
+          "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+          "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+        }
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-click-forward": "tz_up",
+        "on-click-backward": "tz_down",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
+      }
+    },
+"wireplumber": {
+  "format": "{icon} {volume}%",
+  "format-muted": " 🔇 Muted",
+  "format-bluetooth": " 🔊🔵 {volume}{format_source}",
+  "format-bluetooth-muted": " 🔇🔵 Mute",
+  "format-source": " 🎤{volume}",
+  "format-source-muted": " 🎤 Muted",
+  "format-icons": {
+    "headphone": "🎧",
+    "hands-free": "🎤",
+    "headset": "🎧",
+    "phone": "📱",
+    "portable": "📻",
+    "car": "🚗",
+    "default": ["🔊", "🔉", "🔈"]
+  },
+  "scroll-step": 0.2,
+  "max-volume": 100,
+  "on-click": "pavucontrol",
+  "on-click-right": "qpwgraph"
+},
+    "mpris": {
+      "format": "{player_icon} {dynamic}",
+      "format-paused": "{status_icon} <i>{dynamic}</i>",
+      "max-length": 35,
+      "player-icons": {
+        "default": "󰎆",
+        "cmus": "",
+        "mpv": "🎵",
+        "vlc": "🎬",
+        "spotify": ""
+      },
+      "status-icons": {
+        "paused": "⏸"
+      },
+      "on-click": "playerctl play-pause",
+      "on-click-right": "playerctl stop",
+      "smooth-scrolling-threshold": 10,
+      "on-scroll-down": "playerctl previous"
+    },
+    "hyprland/submap": {
+      "format": "✌️ {}",
+      "max-length": 8,
+      "tooltip": false
+    },
+    "hyprland/workspaces": {
+  "on-click": "activate",
+  "format": "{icon} {windows}",
+  "format-window-separator": " ",
+  "window-rewrite-default": "",
+  "window-rewrite": {
+    "title<.*youtube.*>": "",
+    "title<.*whatsapp.*>": "",
+    "class<firefox-developer-edition>": "",
+    "class<firefox>": "",
+    "title<.*github.*>": "",
+    "wezterm": "",
+    "kitty": "",
+    "code": "",
+    "nvim": "",
+    "vim": "",
+    "cmus": "",
+    "spotify": "",
+    "brave": "🦁",
+    "class<discord>": "",
+    "class<slack>": "",
+    "class<vlc>": "嗢",
+    "class<libreoffice-writer>": "",
+    "class<libreoffice-calc>": "",
+    "class<gimp>": "",
+    "class<thunderbird>": "",
+    "title<.*gmail.*>": "",
+    "class<telegram-desktop>": "",
+    "class<remmina>": "",
+    "class<virt-manager>": "",
+    "class<obs>": "",
+    "class<jetbrains-idea>": "",
+    "class<emulator>": "",
+    "class<virtualbox manager>": "",
+    "title<virtualbox>": "",
+    "class<android-studio>": "",
+    "class<steam>": "",
+    "class<figma-linux>": "",
+    "class<tor browser>": ""
+  },
+  "on-scroll-up": "hyprctl dispatch workspace m-1 > /dev/null",
+  "on-scroll-down": "hyprctl dispatch workspace m+1 > /dev/null",
+  "format-icons": {
+    "special": "🎁",
+    "persistent": ""
+  }
+}
+,
+    "wlr/taskbar": {
+      "format": "{icon}",
+      "icon-size": 18,
+      "icon-theme": "BeautyLine",
+      "tooltip-format": "{title}",
+      "on-click": "activate",
+      "on-click-middle": "close",
+      "app_ids-mapping": {
+        "firefoxdeveloperedition": "firefox-developer-edition"
+      },
+      "rewrite": {
+        "Firefox Web Browser": "Firefox"
+      }
+    },
+    "tray": {
+      "icon-size": 18,
+      "spacing": 10
+    },
+    "custom/notification": {
+      "tooltip": false,
+      "format": "{} {icon}",
+      "format-icons": {
+        "notification": "<span foreground='red'><sup></sup></span>",
+        "none": "",
+        "dnd-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-none": "",
+        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "inhibited-none": "",
+        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+        "dnd-inhibited-none": ""
+      },
+      "return-type": "json",
+      "exec-if": "which swaync-client",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
+      "escape": true
+    }
+  }
+]
