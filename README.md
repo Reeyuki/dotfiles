@@ -18,7 +18,26 @@
 ![4](screenshots/screenshot_2025-11-23_10-31-51.png)
 
 
+## 🌿 Branches
+
+| Branch | Description |
+| --- | --- |
+| [`main`](https://github.com/Reeyuki/dotfiles/tree/main) | Legacy Hyprland setup using `hyprland.conf` and `keyBinds.conf`. Use the Quick Start below. |
+| [`caelestia`](https://github.com/Reeyuki/dotfiles/tree/caelestia) | Caelestia Lua config with the old keybinds merged in. See [`caelestia/README.md`](caelestia/README.md). |
+
+Clone the branch you want:
+
+```bash
+# legacy setup (main)
+git clone --depth 1 https://github.com/Reeyuki/dotfiles ~/.config/dotfiles
+
+# Caelestia setup
+git clone -b caelestia https://github.com/Reeyuki/dotfiles ~/dotfiles
+```
+
 ## 🚀 Quick Start
+
+The instructions below are for the `main` branch.
 
 - On fresh Hyprland, install all required packages and clone this repository at `~/.config`
 
@@ -172,6 +191,8 @@ ln -s ~/.config/dotfiles/fish ~/.config/fish
 
 > ### Other programs like browsers and players are listed in `hyprland/defaultPrograms.conf`
 >
-> ### All keybinds are listed at `hyprland/keybinds.conf`
+> ### All `main` keybinds are listed at `hyprland/keyBinds.conf`
+>
+> ### All `caelestia` keybinds are listed at `caelestia/hypr/hyprland/keybinds.lua`
 
 ### 🎉That’s all for now. Enjoy your new environment!🎉
